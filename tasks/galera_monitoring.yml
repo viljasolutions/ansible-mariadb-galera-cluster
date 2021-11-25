@@ -38,7 +38,6 @@
     name: "{{ mariadb_systemd_service_name }}"
     state: "restarted"
   become: true
-  throttle: 1
   when: >
     inventory_hostname != galera_mysql_first_node and
     galera_monitoring_updated.changed

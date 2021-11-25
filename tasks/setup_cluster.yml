@@ -80,7 +80,6 @@
     name: "{{ mariadb_systemd_service_name }}"
     state: "restarted"
   become: true
-  throttle: 1
   when: >
     galera_cluster_configured.stat.exists and
     _mariadb_galera_cluster_reconfigured.changed and
@@ -92,7 +91,6 @@
     name: "{{ mariadb_systemd_service_name }}"
     state: "stopped"
   become: true
-  throttle: 1
   register: "_mariadb_galera_cluster_node"
   until: _mariadb_galera_cluster_node.status.ActiveState == "inactive"
   retries: 60
@@ -174,7 +172,6 @@
     name: "{{ mariadb_systemd_service_name }}"
     state: "started"
   become: true
-  throttle: 1
   register: "_mariadb_galera_cluster_joined"
   until: _mariadb_galera_cluster_joined.status.ActiveState == "active"
   retries: 60
