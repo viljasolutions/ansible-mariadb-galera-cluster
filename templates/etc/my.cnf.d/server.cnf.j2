@@ -72,7 +72,7 @@ wsrep_provider_options="socket.ssl_cert={{ mariadb_certificates_dir }}/{{ mariad
 wsrep_provider_options="{% for item in galera_extra_wsrep_provider_options %}{% set _key = item.split(': ')[0] %}{% set _val = galera_extra_wsrep_provider_options[_key] %}{{ _key }} = {{ _val }}{% if not loop.last %}; {% endif %}{% endfor %}"
 {% endif %}
 
-todo: 2 nodes cases
+# todo: 2 nodes cases
 # https://galeracluster.com/library/kb/two-node-clusters.html
 # Enabling pc.ignore_sb is dangerous, though, in a multi-master setup due to the risk for split-brain situations. However, it does simplify things in master-slave clusters—especially in situations with only two nodes.
 # wsrep_provider_options="pc.ignore_sb=true"
